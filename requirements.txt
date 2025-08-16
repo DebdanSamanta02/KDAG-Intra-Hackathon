@@ -1,0 +1,13 @@
+numpy              # Numerical computations, arrays, linear algebra
+pandas             # Data manipulation and analysis (DataFrames, CSVs)
+scikit-learn       # ML utilities: preprocessing, metrics, model selection
+imbalanced-learn   # Handling imbalanced datasets (SMOTE, etc.)
+lightgbm           # Gradient boosting (fast tree-based models)
+xgboost            # Gradient boosting (popular ML library)
+catboost           # Gradient boosting with categorical support
+matplotlib         # Plotting and visualization
+seaborn            # Statistical data visualization (built on matplotlib)
+torch              # Deep learning framework (PyTorch)
+torchvision        # Vision utilities (MobileNetV2, datasets, transforms)
+pytorch-tabnet     # TabNet model implementation for PyTorch
+optuna             # Hyperparameter optimization framework
