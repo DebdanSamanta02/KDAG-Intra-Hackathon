@@ -15,3 +15,11 @@ KDAG Intras Hackathon- Classifying Benign and Malignant Skin Lesions based on Me
 - Training and validation is done by Undersampling the initial data and using SMOTE to bring the distributions of 1s and 0s closer. This is done over K-Folds (K=5) to generalise model performance
 - Cross Validation is done in a similar way but without using SMOTE. This is the metric that we report for the models
 - Model Hyperparamaters were tuned using Optuna and the two final models considered are an Ensemble of XGBoost and LightGBM, and a PyTorch-TabNet architecture. While it was difficult to surely predict that one model works better than the other, the averaged K-Folds Inference seems to perform better for the Ensemble discussed. Thus we consider that our final Tabular Model
+
+## The Image Data Model
+- Added MobileNetV2 backbone with GAP+GMP pooling and custom dense head, trained with binary focal loss
+- Applied aggressive augmentations (crop/flip/rotate/zoom/brightness-contrast) exclusively to malignant images to improve minority diversity
+- Implemented stratified positive/negative splits and a balanced batch generator (60% pos / 40% neg) to stabilise training
+- Standardised preprocessing: augmentations during training only; deterministic resize + mobilenet normalization for inference
+- Enabled saving/loading of best weights and per-isic_id probability outputs, ensuring alignment with tabular predictions for ensemble use
+- Updated evaluation focus to recall, PR-AUC, F1, and partial AUC in low false-negative regions; de-emphasised accuracy due to extreme imbalance
