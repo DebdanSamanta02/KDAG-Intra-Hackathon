@@ -25,7 +25,7 @@ KDAG Intras Hackathon- Classifying Benign and Malignant Skin Lesions based on Me
 - Updated evaluation focus to recall, PR-AUC, F1, and partial AUC in low false-negative regions; de-emphasised accuracy due to extreme imbalance
 
 ## The Integrated Model
-- Using the ensemble defined in the Tabular Model section and the MobileNetV2 trained in the Image Data Model section, we predict probabilities over K-Folds models averaged.
+- Using the ensemble defined in the Tabular Model section and the MobileNetV2 trained in the Image Data Model section, we predict probabilities without K-Folds structure.
 - Next we get the simple average of scores from both the Ensemble and the MobileNetV2 and consider these as our final probabilities.
 - Threshold tuning did not provide consistent results so we keep the threshold at the default value
 - This gives us the final predictions
