@@ -9,3 +9,9 @@ KDAG Intras Hackathon- Classifying Benign and Malignant Skin Lesions based on Me
 - Finally, since such tasks generally call for Anomaly Detection, on applying PCA to retain 95% variance of 'target' and plotting the 2-axis PCA plot, there is no obvious way to predict anomailes. K-Means with K=2 works poorly, thus we resort to Tabular Inference Models
 
 ## The Tabular Data Models
+- The Pipeline provided does the relevant feature engineering and feature selection as learnt from the EDA and Feature Engineering Sections. Further, it scales all numerical columns using ScikitLearn StandardScaler and encodes all categorical columns Ordinally
+- The Metrics used are a custom partial ROC-AUC metric (pAUC)- this evaluates the ROC-AUC metric only in the sections where False Negatives are low (malignant cases assigned to be benign)
+- We also use the Recall Score and Confusion Matrix to evaluate our models
+- Training and validation is done by Undersampling the initial data and using SMOTE to bring the distributions of 1s and 0s closer. This is done over K-Folds (K=5) to generalise model performance
+- Cross Validation is done in a similar way but without using SMOTE. This is the metric that we report for the models
+- Model Hyperparamaters were tuned using Optuna and the two final models considered are an Ensemble of XGBoost and LightGBM, and a PyTorch-TabNet architecture. While it was difficult to surely predict that one model works better than the other, the averaged K-Folds Inference seems to perform better for the Ensemble discussed. Thus we consider that our final Tabular Model
